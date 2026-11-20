@@ -2,14 +2,14 @@
  * Configurações centrais da marca AG3 e manifesto de rotas por âncora.
  */
 
-// ATENÇÃO: Número de WhatsApp demonstrativo utilizado como fallback.
-// Substitua o valor abaixo ou defina a variável de ambiente VITE_AG3_WHATSAPP_NUMBER
-// no formato DDI + DDD + Número (somente dígitos, ex: 5582999990000).
-const FALLBACK_WHATSAPP_NUMBER = '5582999990000';
+// Número oficial do WhatsApp da AG3: (82) 99914-0485
+const FALLBACK_WHATSAPP_NUMBER = '5582999140485';
 
 export const AG3_WHATSAPP_NUMBER: string = (
   import.meta.env.VITE_AG3_WHATSAPP_NUMBER || FALLBACK_WHATSAPP_NUMBER
 ).replace(/\D/g, '');
+
+export const AG3_WHATSAPP_DISPLAY = '(82) 99914-0485';
 
 export function buildWhatsAppUrl(message: string): string {
   const encoded = encodeURIComponent(message);
@@ -25,6 +25,7 @@ export const AG3_BRAND = {
     brand: 'Shopify',
     tier: 'Premier Partner',
   },
+  whatsappDisplay: AG3_WHATSAPP_DISPLAY,
   social: {
     instagram: 'https://instagram.com',
     linkedin: 'https://linkedin.com',

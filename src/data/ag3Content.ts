@@ -283,6 +283,123 @@ export const GOOGLE_ADS_SERVICES: string[] = [
   'Relatórios de desempenho',
 ];
 
+export interface FashionReferenceModel {
+  id: 'skims' | 'oh-polly' | 'princess-polly';
+  name: string;
+  url: string;
+  archetype: string;
+  brandStoreName: string;
+  headline: string;
+  categories: string[];
+  productName: string;
+  price: string;
+  installment: string;
+  swatches: { label: string; hex: string }[];
+  sizes: string[];
+  uxHighlights: string[];
+  analysis: {
+    visualIdentity: string;
+    navigationAndCategories: string;
+    conversionUx: string;
+  };
+  image: string;
+  themeVariant: 'tonal' | 'editorial-dark' | 'mobile-agile';
+}
+
+export const FASHION_REFERENCE_MODELS: FashionReferenceModel[] = [
+  {
+    id: 'skims',
+    name: 'SKIMS',
+    url: 'https://skims.com/',
+    archetype: 'Minimalismo Tonal & Essenciais',
+    brandStoreName: 'MAISON TONAL',
+    headline: 'Segunda Pele & Alfaiataria em Paleta Neutra',
+    categories: ['Novidades', 'Essenciais', 'Modeladores', 'Conjuntos', 'Kits'],
+    productName: 'Casaco Lã Fria Estruturado + Bolsa Tote',
+    price: 'R$ 689,00',
+    installment: '6x de R$ 114,83 sem juros ou 5% off no Pix',
+    swatches: [
+      { label: 'Carvão', hex: '#232423' },
+      { label: 'Areia', hex: '#D6CEC2' },
+      { label: 'Expresso', hex: '#4B3A32' },
+      { label: 'Alabastro', hex: '#EFECE6' },
+    ],
+    sizes: ['PP', 'P', 'M', 'G', 'GG'],
+    uxHighlights: [
+      'Seletores de tonalidade direto na vitrine',
+      'Banners full-bleed limpos sem ruído visual',
+      'Grade de tamanhos rápida na base da foto',
+    ],
+    analysis: {
+      visualIdentity: 'Superfícies neutras em pedra, alabastro e carvão que deixam o caimento da peça protagonizar.',
+      navigationAndCategories: 'Menu direto por linha de produto, filtros por compressão/tecido e navegação sem distrações.',
+      conversionUx: 'Troca instantânea de cor por swatch na vitrine e adição rápida de tamanho sem sair da coleção.',
+    },
+    image: MEDIA_ASSETS.heroEditorial,
+    themeVariant: 'tonal',
+  },
+  {
+    id: 'oh-polly',
+    name: 'Oh Polly',
+    url: 'https://www.ohpolly.com/',
+    archetype: 'Editorial Noturno & Silhueta Esculpida',
+    brandStoreName: 'ATELIER NOIR',
+    headline: 'Edição Noite · Cortes Estruturados & Ocasião',
+    categories: ['Festa & Noite', 'Vestidos Midi', 'Corsets', 'Shop the Look', 'Lançamentos'],
+    productName: 'Conjunto Blazer Sculpt & Bolsa Estruturada',
+    price: 'R$ 749,00',
+    installment: '6x de R$ 124,83 sem juros · Troca fácil',
+    swatches: [
+      { label: 'Champanhe Areia', hex: '#D5C3AE' },
+      { label: 'Preto Noite', hex: '#141414' },
+      { label: 'Marfim', hex: '#F4F0E8' },
+    ],
+    sizes: ['34', '36', '38', '40', '42'],
+    uxHighlights: [
+      'Enquadramento vertical 3:4 focado em silhueta',
+      'Bloco "Complete o Look" integrado à foto',
+      'Guia de medidas e caimento com clareza',
+    ],
+    analysis: {
+      visualIdentity: 'Contraste refinado entre fundos escuros, champanhe suave e fotografia editorial de alto impacto.',
+      navigationAndCategories: 'Curadoria por ocasião de uso (Festa, Jantar, Eventos) e coleções cápsula com forte apelo visual.',
+      conversionUx: 'Matriz rápida de numeração no hover e vínculo direto entre vestido, bolsa e calçado do look.',
+    },
+    image: MEDIA_ASSETS.fashionApparel,
+    themeVariant: 'editorial-dark',
+  },
+  {
+    id: 'princess-polly',
+    name: 'Princess Polly',
+    url: 'https://www.princesspolly.com/',
+    archetype: 'Vitrine Ágil & Conversão Mobile-First',
+    brandStoreName: 'SOLA & FORMA',
+    headline: 'Drop Semanal · Look Completo & Checkout Rápido',
+    categories: ['New In', 'Vestidos', 'Conjuntos', 'Calçados', 'Acessórios'],
+    productName: 'Tênis Minimal Couro & Combinação Urbana',
+    price: 'R$ 549,00',
+    installment: '6x de R$ 91,50 sem juros ou R$ 521,55 no Pix',
+    swatches: [
+      { label: 'Cru Natural', hex: '#EAE5DC' },
+      { label: 'Pedra', hex: '#C7BFB3' },
+      { label: 'Grafite', hex: '#2B2C2B' },
+    ],
+    sizes: ['PP', 'P', 'M', 'G'],
+    uxHighlights: [
+      'Faixa horizontal de categorias para polegar no mobile',
+      'Filtros instantâneos por ocasião, cor e faixa de preço',
+      'Resumo transparente de Pix, frete e parcelamento',
+    ],
+    analysis: {
+      visualIdentity: 'Leveza editorial contemporânea, alta legibilidade tipográfica e ritmo comercial dinâmico.',
+      navigationAndCategories: 'Chips horizontais deslizáveis no mobile para trocar de categoria em um toque.',
+      conversionUx: 'Compra rápida no feed, cross-selling "Complete o Fit" no carrinho e cálculo imediato de envio.',
+    },
+    image: MEDIA_ASSETS.footwearStudio,
+    themeVariant: 'mobile-agile',
+  },
+];
+
 export const BANNER_CAMPAIGN_TYPES: string[] = [
   'Banners para página inicial',
   'Banners de categorias',
@@ -313,42 +430,42 @@ export interface CampaignGalleryPiece {
 export const CAMPAIGN_GALLERY_PIECES: CampaignGalleryPiece[] = [
   {
     id: 'camp-lancamento',
-    season: 'Novas Coleções · Hero Storefront',
-    headline: 'Essenciais de Outono em Alfaiataria Urbana',
-    subline: 'Peças em lã fria e couro estruturado com curadoria editorial.',
+    season: 'Novas Coleções · Hero Tonal (Ref. SKIMS)',
+    headline: 'Essenciais de Outono em Paleta Neutra',
+    subline: 'Peças em lã fria e couro estruturado com direção limpa e seletores de tom.',
     cta: 'Explorar coleção',
     image: MEDIA_ASSETS.heroEditorial,
-    alt: 'Peça demonstrativa de banner para lançamento de coleção de moda feminina',
+    alt: 'Peça demonstrativa de banner para lançamento de coleção de moda feminina em paleta neutra',
     accent: '#D8FF3E',
   },
   {
-    id: 'camp-calcados',
-    season: 'Lançamentos · Banner de Categoria',
-    headline: 'Série Minimal em Couro & Malha Técnica',
-    subline: 'Numeração completa com envio imediato e primeira troca facilitada.',
-    cta: 'Ver modelos',
-    image: MEDIA_ASSETS.footwearStudio,
-    alt: 'Peça demonstrativa de banner para lançamento de calçados minimalistas',
-    accent: '#6DA8FF',
+    id: 'camp-editorial',
+    season: 'Edição Noite & Alfaiataria · Lookbook (Ref. Oh Polly)',
+    headline: 'Silhuetas Estruturadas & Shop the Look',
+    subline: 'Composição pensada para valorizar caimento, textura e combinação de acessórios.',
+    cta: 'Ver o look',
+    image: MEDIA_ASSETS.fashionApparel,
+    alt: 'Peça demonstrativa de banner editorial para alfaiataria e bolsas femininas',
+    accent: '#8F5CFF',
   },
   {
-    id: 'camp-black',
-    season: 'Black Friday & Tech · Campanha Sazonal',
-    headline: 'Seleção Áudio & Workspace com Condições Especiais',
-    subline: 'Estrutura visual de alta leitura para campanhas de alta demanda.',
-    cta: 'Conferir seleção',
-    image: MEDIA_ASSETS.techAccessories,
-    alt: 'Peça demonstrativa de campanha promocional para eletrônicos e acessórios',
-    accent: '#8F5CFF',
+    id: 'camp-drop',
+    season: 'Drop Mobile & Calçados · Vitrine Ágil (Ref. Princess Polly)',
+    headline: 'New In · Couro Minimal & Conforto Urbano',
+    subline: 'Navegação rápida por numeração e categorias deslizáveis para compra no celular.',
+    cta: 'Conferir drop',
+    image: MEDIA_ASSETS.footwearStudio,
+    alt: 'Peça demonstrativa de campanha para lançamentos e calçados femininos',
+    accent: '#6DA8FF',
   },
   {
     id: 'camp-maes',
     season: 'Dia das Mães & Natal · Kits Presenteáveis',
-    headline: 'Rituais Botânicos de Cuidado Diário',
+    headline: 'Curadoria de Beleza & Autocuidado Botânico',
     subline: 'Apresentação pensada para elevar o ticket médio com kits sazonais.',
     cta: 'Montar presente',
     image: MEDIA_ASSETS.cosmeticsStudio,
-    alt: 'Peça demonstrativa de banner sazonal para linha de cosméticos',
+    alt: 'Peça demonstrativa de banner sazonal para linha de cosméticos e presentes',
     accent: '#FF8D42',
   },
 ];
@@ -371,7 +488,8 @@ export interface PortfolioConceptItem {
   id: string;
   name: string;
   segment: string;
-  filterKey: 'moda' | 'cosmeticos' | 'calcados' | 'eletronicos' | 'decoracao';
+  platform: string;
+  url: string;
   description: string;
   architectureFocus: string[];
   image: string;
@@ -380,70 +498,55 @@ export interface PortfolioConceptItem {
 
 export const PORTFOLIO_CONCEPTS: PortfolioConceptItem[] = [
   {
-    id: 'concept-atelier-nord',
-    name: 'Atelier Nord',
-    segment: 'Moda feminina',
-    filterKey: 'moda',
+    id: 'shopify-skims',
+    name: 'SKIMS',
+    segment: 'Moda feminina · Essenciais',
+    platform: 'Criado em Shopify',
+    url: 'https://skims.com/',
     description:
-      'Conceito de loja Shopify com vitrines editoriais, filtros por caimento e tecido, e página de produto focada em conversão.',
-    architectureFocus: ['Shopify OS 2.0', 'UX/UI Editorial', 'Filtros por tamanho e cor', 'SEO de categorias'],
+      'Loja virtual desenvolvida em Shopify com estética minimalista tonal, seletores de tonalidade direto na vitrine, grade rápida de tamanhos e experiência fluida do catálogo ao checkout.',
+    architectureFocus: [
+      'Desenvolvido em Shopify',
+      'Seletores de tonalidade na vitrine',
+      'Banners editoriais full-bleed',
+      'Navegação direta por categorias',
+    ],
     image: MEDIA_ASSETS.heroEditorial,
-    alt: 'Projeto demonstrativo Atelier Nord — loja virtual conceito de moda feminina',
+    alt: 'SKIMS — projeto de loja virtual desenvolvida em Shopify',
   },
   {
-    id: 'concept-casa-alfaiate',
-    name: 'Veste & Forma',
-    segment: 'Moda masculina e Acessórios',
-    filterKey: 'moda',
+    id: 'shopify-oh-polly',
+    name: 'Oh Polly',
+    segment: 'Moda feminina · Editorial & Ocasião',
+    platform: 'Criado em Shopify',
+    url: 'https://www.ohpolly.com/',
     description:
-      'Estrutura pensada para moda masculina contemporânea e acessórios em couro, com cross-selling inteligente no carrinho.',
-    architectureFocus: ['Lookbook comprável', 'Cross-selling no drawer', 'Tabela de medidas interativa'],
+      'E-commerce criado em Shopify com forte direção editorial, curadoria por ocasião de uso, blocos de look completo e página de produto pensada para conversão e desejo de compra.',
+    architectureFocus: [
+      'Desenvolvido em Shopify',
+      'Shop the Look integrado',
+      'Curadoria por ocasião de uso',
+      'Guia de medidas e caimento',
+    ],
     image: MEDIA_ASSETS.fashionApparel,
-    alt: 'Projeto demonstrativo Veste & Forma — loja virtual conceito de moda e acessórios',
+    alt: 'Oh Polly — projeto de loja virtual desenvolvida em Shopify',
   },
   {
-    id: 'concept-sola-studio',
-    name: 'Sola Studio',
-    segment: 'Calçados',
-    filterKey: 'calcados',
+    id: 'shopify-princess-polly',
+    name: 'Princess Polly',
+    segment: 'Moda feminina · Mobile-First',
+    platform: 'Criado em Shopify',
+    url: 'https://www.princesspolly.com/',
     description:
-      'Vitrine de calçados com seleção rápida de numeração, galeria em alta definição e integração preparada para Google Shopping.',
-    architectureFocus: ['Seletor rápido de grade', 'Google Merchant Center', 'Checkout Pix e cartão'],
+      'Operação em Shopify focada em agilidade no celular, com barra horizontal de categorias, filtros instantâneos, cross-selling inteligente no carrinho e checkout otimizado.',
+    architectureFocus: [
+      'Desenvolvido em Shopify',
+      'Navegação mobile-first por polegar',
+      'Filtros combinados e compra rápida',
+      'Cross-selling no carrinho',
+    ],
     image: MEDIA_ASSETS.footwearStudio,
-    alt: 'Projeto demonstrativo Sola Studio — loja virtual conceito de calçados',
-  },
-  {
-    id: 'concept-botanica-pura',
-    name: 'Ritual Botânico',
-    segment: 'Cosméticos',
-    filterKey: 'cosmeticos',
-    description:
-      'Experiência de compra para cosméticos com foco em confiança, transparência de ativos, kits combinados e blog integrado.',
-    architectureFocus: ['Kits de up-selling', 'Blog educativo integrado', 'Schema.org Product'],
-    image: MEDIA_ASSETS.cosmeticsStudio,
-    alt: 'Projeto demonstrativo Ritual Botânico — loja virtual conceito de cosméticos',
-  },
-  {
-    id: 'concept-acustica-lab',
-    name: 'Acústica Lab',
-    segment: 'Eletrônicos',
-    filterKey: 'eletronicos',
-    description:
-      'Catálogo técnico para eletrônicos e acessórios com fichas comparativas claras, busca inteligente e campanhas sazonais.',
-    architectureFocus: ['Fichas técnicas escaneáveis', 'Performance Max ready', 'Busca preditiva'],
-    image: MEDIA_ASSETS.techAccessories,
-    alt: 'Projeto demonstrativo Acústica Lab — loja virtual conceito de eletrônicos',
-  },
-  {
-    id: 'concept-forma-objeto',
-    name: 'Forma & Objeto',
-    segment: 'Decoração',
-    filterKey: 'decoracao',
-    description:
-      'Arquitetura digital para objetos de decoração e casa, com cálculo de frete transparente e curadoria por ambiente.',
-    architectureFocus: ['Navegação por ambiente', 'Cálculo de frete no PDP', 'SEO semântico'],
-    image: MEDIA_ASSETS.fashionApparel,
-    alt: 'Projeto demonstrativo Forma & Objeto — loja virtual conceito de decoração',
+    alt: 'Princess Polly — projeto de loja virtual desenvolvida em Shopify',
   },
 ];
 

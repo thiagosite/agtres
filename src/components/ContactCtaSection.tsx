@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowUpRight, CheckCircle2, MessageCircle, Copy, Check } from 'lucide-react';
 import { AG3_BRAND, buildWhatsAppUrl } from '../config/brand';
+import { MotionReveal } from './MotionReveal';
 
 interface FormData {
   nome: string;
@@ -117,7 +118,7 @@ export const ContactCtaSection: React.FC = () => {
         className="pointer-events-none absolute bottom-0 right-[-10%] w-[460px] h-[460px] rounded-full bg-[#8F5CFF]/14 blur-[130px]"
       />
 
-      <div className="relative max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+      <MotionReveal className="relative max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* CTA Final de Alto Impacto */}
         <div className="bg-[#171A17] border border-white/12 p-7 sm:p-10 lg:p-12 radius-ag3-lg mb-14">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -150,7 +151,7 @@ export const ContactCtaSection: React.FC = () => {
                 className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 text-xs sm:text-sm font-semibold tracking-wide border border-white/20 text-[#FFFDF7] bg-[#101110] hover:border-[#D8FF3E]/60 hover:text-[#D8FF3E] transition-colors radius-ag3-sm text-center"
               >
                 <MessageCircle className="w-4 h-4 shrink-0" aria-hidden="true" />
-                <span>FALAR COM UM ESPECIALISTA</span>
+                <span>FALAR NO WHATSAPP · {AG3_BRAND.whatsappDisplay}</span>
               </a>
             </div>
           </div>
@@ -167,10 +168,24 @@ export const ContactCtaSection: React.FC = () => {
             </h3>
             <p className="text-sm sm:text-base text-[#FFFDF7]/72 leading-relaxed mb-6">
               Ao preencher os campos ao lado, montamos automaticamente um resumo estruturado do seu
-              projeto e encaminhamos sua solicitação direto para o WhatsApp da equipe AG3.
+              projeto e encaminhamos sua solicitação direto para o WhatsApp da AG3.
             </p>
 
             <div className="space-y-4 border-t border-white/10 pt-6 text-sm text-[#FFFDF7]/80">
+              <div>
+                <span className="block font-display font-semibold text-[#D8FF3E]">
+                  WhatsApp comercial: {AG3_BRAND.whatsappDisplay}
+                </span>
+                <a
+                  href={AG3_BRAND.social.whatsappDirect}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs text-[#FFFDF7]/75 hover:text-[#D8FF3E] mt-1 underline underline-offset-4"
+                >
+                  <span>Iniciar conversa direta no WhatsApp</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
+                </a>
+              </div>
               <div>
                 <span className="block font-display font-semibold text-[#FFFDF7]">
                   Atendimento consultivo direto
@@ -377,7 +392,7 @@ export const ContactCtaSection: React.FC = () => {
             </form>
           </div>
         </div>
-      </div>
+      </MotionReveal>
     </section>
   );
 };

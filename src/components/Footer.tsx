@@ -66,7 +66,7 @@ export const Footer: React.FC = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 hover:text-[#D8FF3E] transition-colors"
                 >
-                  <span>WhatsApp</span>
+                  <span>WhatsApp · {AG3_BRAND.whatsappDisplay}</span>
                   <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
                 </a>
               </li>

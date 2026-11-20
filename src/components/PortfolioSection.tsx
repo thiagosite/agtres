@@ -1,79 +1,39 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, X, Check } from 'lucide-react';
+import { ArrowUpRight, ExternalLink, X, Check, ShoppingBag } from 'lucide-react';
 import { PORTFOLIO_CONCEPTS, PortfolioConceptItem } from '../data/ag3Content';
 import { SafeImage } from './SafeImage';
-
-const FILTER_OPTIONS: { id: 'all' | PortfolioConceptItem['filterKey']; label: string }[] = [
-  { id: 'all', label: 'Todos' },
-  { id: 'moda', label: 'Moda & Acessórios' },
-  { id: 'calcados', label: 'Calçados' },
-  { id: 'cosmeticos', label: 'Cosméticos' },
-  { id: 'eletronicos', label: 'Eletrônicos' },
-  { id: 'decoracao', label: 'Decoração' },
-];
+import { MotionReveal } from './MotionReveal';
 
 export const PortfolioSection: React.FC = () => {
-  const [activeFilter, setActiveFilter] = useState<'all' | PortfolioConceptItem['filterKey']>('all');
   const [selectedConcept, setSelectedConcept] = useState<PortfolioConceptItem | null>(null);
-
-  const visibleProjects =
-    activeFilter === 'all'
-      ? PORTFOLIO_CONCEPTS
-      : PORTFOLIO_CONCEPTS.filter((item) => item.filterKey === activeFilter);
 
   return (
     <section
       id="portfolio"
-      className="bg-[#171A17] text-[#FFFDF7] py-20 md:py-28 border-b border-white/10"
+      className="bg-[#171A17] text-[#FFFDF7] py-16 md:py-22 border-b border-white/10"
     >
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+      <MotionReveal className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Cabeçalho */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
           <div className="max-w-2xl">
-            <p className="text-xs font-semibold tracking-[0.16em] uppercase text-[#D8FF3E] mb-3">
-              Portfólio Demonstrativo
-            </p>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-bold leading-[1.1] tracking-tight text-[#FFFDF7]">
-              Experiências digitais desenvolvidas para marcas que querem crescer.
+            <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.16em] uppercase text-[#D8FF3E] mb-2.5">
+              <ShoppingBag className="w-3.5 h-3.5" aria-hidden="true" />
+              <span>Modelos Criados pela Shopify</span>
+            </div>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold leading-[1.1] tracking-tight text-[#FFFDF7]">
+              Experiências digitais desenvolvidas em Shopify para marcas que querem crescer.
             </h2>
           </div>
 
-          <p className="text-xs sm:text-sm text-[#FFFDF7]/65 max-w-md">
-            Conceitos autorais desenvolvidos pela AG3 para demonstrar arquitetura visual, UX/UI e
-            posicionamento por segmento. Estrutura preparada para atualização com novos cases.
+          <p className="text-xs sm:text-sm text-[#FFFDF7]/68 max-w-md">
+            Três modelos de lojas desenvolvidas na plataforma Shopify como referência de identidade
+            visual, organização de vitrines, navegação e conversão em moda feminina.
           </p>
         </div>
 
-        {/* Filtros por Segmento */}
-        <div
-          className="flex flex-wrap gap-2 mb-10"
-          role="tablist"
-          aria-label="Filtrar projetos demonstrativos por segmento"
-        >
-          {FILTER_OPTIONS.map((option) => {
-            const isActive = option.id === activeFilter;
-            return (
-              <button
-                key={option.id}
-                type="button"
-                role="tab"
-                aria-selected={isActive}
-                onClick={() => setActiveFilter(option.id)}
-                className={`px-4 py-2 text-xs font-semibold rounded-md transition-colors whitespace-nowrap ${
-                  isActive
-                    ? 'bg-[#D8FF3E] text-[#101110]'
-                    : 'bg-[#101110] text-[#FFFDF7]/75 border border-white/10 hover:border-white/25 hover:text-[#FFFDF7]'
-                }`}
-              >
-                {option.label}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Grid de Cards do Portfólio Demonstrativo */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {visibleProjects.map((project) => (
+        {/* Grid com os 3 Sites Shopify solicitados (SKIMS, Oh Polly, Princess Polly) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {PORTFOLIO_CONCEPTS.map((project) => (
             <article
               key={project.id}
               className="group bg-[#101110] border border-white/10 hover:border-[#D8FF3E]/50 radius-ag3 overflow-hidden flex flex-col justify-between transition-transform duration-200 hover:-translate-y-1"
@@ -87,19 +47,18 @@ export const PortfolioSection: React.FC = () => {
                   />
                   <div
                     aria-hidden="true"
-                    className="absolute inset-0 bg-gradient-to-t from-[#101110]/80 via-transparent to-transparent"
+                    className="absolute inset-0 bg-gradient-to-t from-[#101110]/85 via-transparent to-transparent"
                   />
                 </div>
 
                 <div className="p-6">
-                  {/* Metadado limpo sem pílulas: Segmento · Projeto demonstrativo */}
                   <div className="flex flex-wrap items-center gap-2 text-xs text-[#FFFDF7]/60 mb-2">
-                    <span className="text-[#D8FF3E] font-medium">{project.segment}</span>
+                    <span className="text-[#D8FF3E] font-medium">{project.platform}</span>
                     <span aria-hidden="true">·</span>
-                    <span>Projeto demonstrativo</span>
+                    <span>{project.segment}</span>
                   </div>
 
-                  <h3 className="font-display text-xl font-bold text-[#FFFDF7] mb-2">
+                  <h3 className="font-display text-2xl font-bold text-[#FFFDF7] mb-2">
                     {project.name}
                   </h3>
                   <p className="text-sm text-[#FFFDF7]/72 leading-relaxed">
@@ -108,23 +67,31 @@ export const PortfolioSection: React.FC = () => {
                 </div>
               </div>
 
-              <div className="px-6 pb-6 pt-3 border-t border-white/8 flex items-center justify-between">
-                <span className="text-xs text-[#FFFDF7]/50">Conceito AG3</span>
+              <div className="px-6 pb-6 pt-3 border-t border-white/8 flex items-center justify-between gap-3">
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-medium text-[#FFFDF7]/80 hover:text-[#FFFDF7] transition-colors whitespace-nowrap"
+                >
+                  <span>Visitar loja</span>
+                  <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
+                </a>
                 <button
                   type="button"
                   onClick={() => setSelectedConcept(project)}
                   className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#D8FF3E] hover:underline whitespace-nowrap"
                 >
-                  <span>Visualizar projeto</span>
+                  <span>Ver detalhes</span>
                   <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
                 </button>
               </div>
             </article>
           ))}
         </div>
-      </div>
+      </MotionReveal>
 
-      {/* Modal de Visualização de Conceito Demonstrativo */}
+      {/* Modal de Visualização do Modelo Shopify */}
       {selectedConcept && (
         <div
           role="dialog"
@@ -140,16 +107,16 @@ export const PortfolioSection: React.FC = () => {
             <button
               type="button"
               onClick={() => setSelectedConcept(null)}
-              aria-label="Fechar visualização do projeto demonstrativo"
+              aria-label="Fechar detalhes do projeto Shopify"
               className="absolute top-4 right-4 w-9 h-9 rounded-md border border-white/15 flex items-center justify-center text-[#FFFDF7]/75 hover:text-[#FFFDF7] hover:border-white/40"
             >
               <X className="w-4 h-4" />
             </button>
 
             <div className="flex items-center gap-2 text-xs text-[#D8FF3E] font-medium mb-2">
-              <span>{selectedConcept.segment}</span>
+              <span>{selectedConcept.platform}</span>
               <span aria-hidden="true" className="text-[#FFFDF7]/40">·</span>
-              <span className="text-[#FFFDF7]/70">Projeto demonstrativo</span>
+              <span className="text-[#FFFDF7]/70">{selectedConcept.segment}</span>
             </div>
 
             <h3
@@ -173,7 +140,7 @@ export const PortfolioSection: React.FC = () => {
 
             <div className="bg-[#171A17] border border-white/10 p-4 radius-ag3-sm mb-6">
               <span className="block text-xs font-semibold text-[#FFFDF7] mb-2.5">
-                Arquitetura planejada neste conceito:
+                Destaques da arquitetura Shopify:
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#FFFDF7]/80">
                 {selectedConcept.architectureFocus.map((focus) => (
@@ -186,15 +153,21 @@ export const PortfolioSection: React.FC = () => {
             </div>
 
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <span className="text-xs text-[#FFFDF7]/55">
-                Modelo conceitual sem métricas comerciais fictícias.
-              </span>
+              <a
+                href={selectedConcept.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-medium text-[#FFFDF7]/80 hover:text-[#D8FF3E]"
+              >
+                <span>Abrir {selectedConcept.url.replace('https://', '').replace(/\/$/, '')}</span>
+                <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
+              </a>
               <a
                 href="#contato"
                 onClick={() => setSelectedConcept(null)}
                 className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold bg-[#D8FF3E] text-[#101110] radius-ag3-sm"
               >
-                <span>Quero uma estrutura assim</span>
+                <span>Quero uma loja Shopify nesse padrão</span>
                 <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
               </a>
             </div>

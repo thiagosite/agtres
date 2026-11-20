@@ -1,6 +1,7 @@
 import React from 'react';
 import { Store, Sparkles, Layers, Search, TrendingUp, Cpu, ArrowUpRight } from 'lucide-react';
 import { PILLARS, PillarItem } from '../data/ag3Content';
+import { MotionReveal } from './MotionReveal';
 
 const PILLAR_ICONS: Record<PillarItem['iconKey'], React.ReactNode> = {
   store: <Store className="w-5 h-5" aria-hidden="true" />,
@@ -17,7 +18,7 @@ export const PillarsSection: React.FC = () => {
       aria-labelledby="pilares-heading"
       className="bg-[#171A17] text-[#FFFDF7] py-16 md:py-20 border-b border-white/10"
     >
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+      <MotionReveal className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
           <div>
             <p className="text-xs font-medium tracking-[0.16em] text-[#D8FF3E] uppercase mb-2">
@@ -77,7 +78,7 @@ export const PillarsSection: React.FC = () => {
             </a>
           ))}
         </div>
-      </div>
+      </MotionReveal>
     </section>
   );
 };
