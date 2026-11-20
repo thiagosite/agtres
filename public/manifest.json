@@ -1,0 +1,22 @@
+{
+  "name": "AG3 — E-commerce, Digital Experience & Performance",
+  "short_name": "AG3",
+  "description": "AG3 — Transformamos lojas virtuais em experiências digitais preparadas para vender mais.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#101110",
+  "theme_color": "#D8FF3E",
+  "lang": "pt-BR",
+  "routes": [
+    { "id": "inicio", "path": "/#inicio", "title": "Início" },
+    { "id": "solucoes", "path": "/#solucoes", "title": "Soluções" },
+    { "id": "experiencia", "path": "/#experiencia", "title": "Experiência UX/UI" },
+    { "id": "gestao-mensal", "path": "/#gestao-mensal", "title": "Gestão Mensal" },
+    { "id": "seo", "path": "/#seo", "title": "SEO e IA" },
+    { "id": "performance", "path": "/#performance", "title": "Performance e Google Ads" },
+    { "id": "portfolio", "path": "/#portfolio", "title": "Portfólio" },
+    { "id": "metodo", "path": "/#metodo", "title": "Método" },
+    { "id": "faq", "path": "/#faq", "title": "Perguntas Frequentes" },
+    { "id": "contato", "path": "/#contato", "title": "Contato" }
+  ]
+}
